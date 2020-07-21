@@ -44,7 +44,7 @@ qrcode.makeCode("http://naver.com"); // make another code.
 
 IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.
 
-### 有疑问请留言
-
+### 有疑问请留言邮箱
+第一次做开源小demo，有错的地方纠正一下，谢谢各位大神
 1259446122@qq.com
 
