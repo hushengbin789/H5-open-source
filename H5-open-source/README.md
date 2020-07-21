@@ -8,41 +8,7 @@ js是用于制作QRCode的javascript库。js在DOM中支持HTML5 Canvas和表格
 - index-2.html
 - index-3.html
 
-## 基本用法
-
-```
-<div id="qrcode"></div>
-<script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
-</script>
-```
-
-or with some options
-
-```js
-<div id="qrcode"></div>
-<script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: "http://jindo.dev.naver.com/collie",
-	width: 128,
-	height: 128,
-	colorDark : "#000000",
-	colorLight : "#ffffff",
-	correctLevel : QRCode.CorrectLevel.H
-});
-</script>
-```
-
-*你可以使用这些方法*
-
-```js
-qrcode.clear(); // clear the code.
-qrcode.makeCode("http://naver.com"); // make another code.
-```
-
-## 浏览器兼容性
-
-IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.
+![二维码](http://m.qpic.cn/psc?/V140ANME39jplF/ruAMsa53pVQWN7FLK88i5sK3SON0lqGQymnNVsCVahFYQQVX*Ts4.QmxmAnz.eyTXwbvnSogARbL7clhloMg5pUTim5SlohlrUeIjFV06qI!/b&bo=AwGhAQAAAAABB4I!&rf=viewer_4)
 
 ### 有疑问请留言邮箱
 第一次做开源小demo，有错的地方纠正一下，谢谢各位大神
