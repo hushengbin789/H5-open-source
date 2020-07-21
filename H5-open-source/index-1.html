@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>qrcode.js生成二维码之一</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+</head>
+<body>
+   <div style="width: 400px;height: 400px;border: #ccc solid 1px;margin: 60px auto 0;"> 
+        <h2>输入你想要内容来获取验证码</h2>
+        <input id="text" type="text" value="https://github.com/hushengbin789/Hushengbin789" style="width:200px" /><br />
+        <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+   </div>
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), { //显示二维码的元素或该元素的 ID
+        errorCorrectionLevel: "H",//容错率L（低）H(高) 一般情况下可忽略
+        margin: 2,//二维码内边距，默认为4。单位px  一般情况下可忽略
+        height: 200,//二维码高度
+        width: 200,//二维码宽度
+        colorDark : '#000000', //前景色
+        colorLight : '#ffffff', //背景色
+        // correctLevel : QRCode.CorrectLevel.H   
+        /* 容错级别 分为四个 
+            QRCode.CorrectLevel.L  
+            QRCode.CorrectLevel.M  
+            QRCode.CorrectLevel.H  
+            QRCode.CorrectLevel.Q
+        */
+    })
+    
+    function makeCode () {		
+        var elText = document.getElementById("text");
+        
+        if (!elText.value) {
+            alert("请输入文本框的值");
+            elText.focus();
+            return;
+        }
+        
+        qrcode.makeCode(elText.value);//设置二维码内容  这里是获取到的文本框里的值
+    }
+    
+    makeCode();
+    //用鼠标键盘事件刷新二维码
+    $("#text").
+        on("blur", function () {
+            makeCode();
+        }).
+        on("keydown", function (e) {
+            if (e.keyCode == 13) {
+                makeCode();
+            }
+        });
+</script>
+</body>
+</html>

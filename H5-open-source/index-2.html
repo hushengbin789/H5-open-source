@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>qrcode.js生成二维码之二</title>
+</head>
+<body>
+    内容：<input type="text" id="content" value="https://blog.csdn.net/qq_45094682" />  <br><br>
+    尺寸：<input type="text" id="size" value="150"><br><br>
+    背景：<input type="text" id="bgc" value="#fff"><br><br>
+    前景：<input type="text" id="colorr" value="#000"><br><br>
+    <button id="btn">生成二维码</button><br><br>
+    <div id="qrcode"></div>
+    
+</body>
+<script src='qrcode.js'></script>
+<script type="text/javascript">
+
+    //先声明变量
+    let qrcode;
+    let content;
+    let size;
+    let bgc;
+    let colorr;
+    // 设置点击事件
+    document.getElementById("btn").onclick =function(){
+        // 获取内容
+        content = document.getElementById("content").value;
+        // 获取尺寸
+        size = document.getElementById("size").value;
+         // 获取背景
+         bgc = document.getElementById("bgc").value;
+         // 获取前景
+        colorr = document.getElementById("colorr").value;
+        // 清除上一次的二维码
+         if(qrcode){
+            qrcode.clear();
+        }
+        // 创建二维码
+        qrcode = new QRCode(document.getElementById("qrcode"), {
+            width : size,//设置二维码宽
+            height : size,//设置二维码宽度
+            colorLight : bgc,//背景色
+            colorDark : colorr,//前景色
+            src : '01.jpg'  //二维码中间的图片
+            
+        });
+        qrcode.makeCode(content);
+
+    }
+
+</script>
+</html>

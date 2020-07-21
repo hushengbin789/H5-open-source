@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qrcode.js生成二维码之三</title>
+</head>
+<body>
+   <div id="qrcode" style="width:250px; height:250px;margin: 0 auto;"></div>
+
+   <div id="qrcodeNone" style="display: none;"></div>
+
+<script type="text/javascript" src="./qrcode.js"></script>
+<script src="./jquery.min.js"></script>
+    
+<script type="text/javascript">
+    function qrcodeStart(packagesId){
+        $("img[alt='Scan me!']").remove(); //重复生成二维码时，删除前一张
+        $("#qrcode").html(""); //重复生成二维码时，删除前一张（手机端加上这个才能清除）
+        $("#qrcodeNone").html(""); //重复生成二维码时，清除前一张
+
+        var urlLink = $('#pagelink').val();
+        var codesmer= $('#codesmer').val();
+        var url = urlLink + "codepage/codepage?codesmer=" + codesmer+"&&packagesId="+packagesId; //根据需求拼接地址
+        var qrcode = new QRCode(document.getElementById("qrcodeNone"), {
+                text: url,
+                width: 200, //生成的二维码的宽度
+                height: 200, //生成的二维码的高度
+                colorDark : "#000000", // 生成的二维码的深色部分
+                colorLight : "#ffffff", //生成二维码的浅色部分
+                correctLevel : QRCode.CorrectLevel.L
+              });
+    
+         //获取网页中的canvas对象
+    
+        var mycanvas1=document.getElementsByTagName('canvas')[0];
+        mycanvas1.style.display = 'none';//隐藏生成的canvas
+        //将转换后的img标签插入到html中
+        var img=convertCanvasToImage(mycanvas1);
+        $('#qrcode').append(img);//imagQrDiv表示你要插入的容器id
+    
+    };
+    
+        //从 canvas 提取图片 image
+    function convertCanvasToImage(canvas) {
+        //新Image对象，可以理解为DOM
+        var image = new Image();
+
+        // canvas.toDataURL 返回的是一串Base64编码的URL，当然,浏览器自己肯定支持
+
+        // 指定格式 PNG
+        image.src = canvas.toDataURL("image/png");
+
+        return image;
+
+    }
+    
+</script>
+</body>
+</html>
